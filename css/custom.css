@@ -1,111 +1,101 @@
-/*
-Theme Name: Etcnet Solar
-Theme URI: https://etcnet.fi
-Description: Etcetera Networks Solar Theme (Twenty-One Child)
-Author: Etcetera Networks
-Template: twenty-one
-Version: 1.0
-License: GNU General Public License v3 or later
-License URI: http://www.gnu.org/licenses/gpl.html
-*/
-
-/* --- 1. FONTTIEN TUONTI --- */
-[span_0](start_span)/* Merriweather (Otsikot) ja Inter (Leipäteksti)[span_0](end_span) */
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Inter:wght@300;400;500;600&display=swap');
-
-/* --- 2. VARIAABELIT (Tailwind Stone & Amber) --- */
+/* --- Etcnet Solar - Väripaletti --- */
 :root {
-    /* Ensisijaiset värit (Primary) */
-    --color-brand-primary: #d97706;  [span_1](start_span)/* Amber-600[span_1](end_span) */
-    --color-brand-hover:   #b45309;  [span_2](start_span)/* Amber-700[span_2](end_span) */
-    --color-brand-light:   #fbbf24;  [span_3](start_span)/* Amber-400[span_3](end_span) */
-    
-    /* Taustavärit (Backgrounds) */
-    --bg-body:        #fafaf9; [span_4](start_span)/* Stone-50[span_4](end_span) */
-    --bg-card:        #ffffff; [span_5](start_span)/* White[span_5](end_span) */
-    --bg-dark-header: #1c1917; [span_6](start_span)/* Stone-900[span_6](end_span) */
-    
-    /* Tekstivärit (Typography) */
-    --text-main:      #1c1917; [span_7](start_span)/* Stone-900[span_7](end_span) */
-    --text-muted:     #57534e; [span_8](start_span)/* Stone-600[span_8](end_span) */
-    --text-inverse:   #f5f5f4; [span_9](start_span)/* Stone-100[span_9](end_span) */
-    
-    /* Rajat (Borders) */
-    --border-color:   #e7e5e4; [span_10](start_span)/* Stone-200[span_10](end_span) */
+    --nordic-night: #263238;     /* Tumma siniharmaa (Yötaivas) */
+    --forest-deep: #334D50;      /* Syvä havumetsä */
+    --solar-warm: #E67E22;       /* Lämmin oranssi (Aurinko/Ruska) */
+    --solar-light: #F39C12;      /* Kirkkaampi keltainen (Lakka) */
+    --snow-warm: #FDFBF7;        /* Lämmin valkoinen/kerma */
+    --text-dark: #2c3e50;
 }
 
-/* --- 3. PERUSTYYLIT (Base Styles) --- */
-
+/* Yleiset asetukset */
 body {
-    background-color: var(--bg-body) !important; [span_11](start_span)/*[span_11](end_span) */
-    font-family: 'Inter', sans-serif; [span_12](start_span)/*[span_12](end_span) */
-    color: var(--text-main) !important;
+    background-color: var(--snow-warm);
+    color: var(--text-dark);
+    font-family: 'Open Sans', sans-serif; /* Tai haluamasi fontti */
 }
 
-/* Otsikot (H1-H6) - Merriweather */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Merriweather', serif !important; [span_13](start_span)/*[span_13](end_span) */
-    font-weight: 700;
-    color: var(--text-main);
-}
-
-/* --- 4. HEADER & NAVIGAATIO --- */
-
-/* Yläpalkki (Navbar) tummaksi */
-.header-main, 
+/* Yläpalkki (Navbar) */
 .navbar-main {
-    background-color: var(--bg-dark-header) !important; [span_14](start_span)/*[span_14](end_span) */
-    border-bottom: none;
+    background-color: var(--nordic-night);
+    border-bottom: 3px solid var(--solar-warm);
 }
 
-/* Navigaatiolinkit */
 .navbar-main .navbar-nav .nav-link {
-    color: var(--text-inverse) !important;
-    font-family: 'Inter', sans-serif;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .navbar-main .navbar-nav .nav-link:hover {
-    color: var(--color-brand-light) !important;
+    color: var(--solar-warm);
 }
 
-/* Logo - Merriweather Bold */
-.navbar-brand {
-    font-family: 'Merriweather', serif;
+/* Hero-alue (Etusivun iso banneri) */
+.home-banner {
+    background: linear-gradient(135deg, var(--nordic-night) 0%, var(--forest-deep) 100%);
+    color: #fff;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Lisätään "Solar" efekti CSS:llä */
+.home-banner::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--solar-warm) 0%, transparent 70%);
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.home-banner h1 {
     font-weight: 700;
-    color: var(--text-inverse) !important;
+    color: #fff;
 }
 
-/* --- 5. KOMPONENTIT --- */
-
-/* Kortit ja Paneelit (Cards & Panels) */
-.card, .panel {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 24px !important; [span_15](start_span)[span_16](start_span)/* Pyöristetyt kulmat 24px[span_15](end_span)[span_16](end_span) */
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); [span_17](start_span)/*[span_17](end_span) */
+.home-banner h2 {
+    color: var(--solar-light);
+    font-weight: 300;
 }
 
-/* Sivupalkki (Sidebar) */
-.card-sidebar {
-    background-color: #ffffff; [span_18](start_span)/*[span_18](end_span) */
-    border-radius: 24px;
-}
-
-/* --- 6. PAINIKKEET (Buttons) --- */
-
-/* Primary Button - Pilleri-muoto */
+/* Painikkeet */
 .btn-primary {
-    background-color: var(--color-brand-primary) !important;
-    border-color: var(--color-brand-primary) !important;
-    border-radius: 9999px !important; [span_19](start_span)/* Täysi pilleri[span_19](end_span) */
-    padding: 0.75rem 1.5rem; [span_20](start_span)/* Väljät välit[span_20](end_span) */
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
+    background-color: var(--solar-warm);
+    border-color: var(--solar-warm);
+    color: #fff;
+    transition: all 0.3s ease;
 }
 
-/* Hover-tila */
-.btn-primary:hover {
-    background-color: var(--color-brand-hover) !important;
-    transform: scale(1.05); [span_21](start_span)/* Pieni suurennus[span_21](end_span) */
-    box-shadow: 0 10px 15px -3px rgba(180, 83, 9, 0.3); [span_22](start_span)/*[span_22](end_span) */
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background-color: var(--solar-light) !important;
+    border-color: var(--solar-light) !important;
+    color: #fff;
+}
+
+/* Domain haku */
+.domain-search-input {
+    border: 2px solid var(--forest-deep);
+    border-radius: 5px 0 0 5px;
+}
+
+.btn-domain-search {
+    background-color: var(--forest-deep);
+    color: #fff;
+}
+
+/* Kortit ja paneelit */
+.card {
+    border: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    background-color: #fff;
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 2px solid var(--solar-light);
+    font-weight: bold;
+    color: var(--forest-deep);
 }
