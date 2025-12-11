@@ -1,0 +1,6 @@
+# My Theme Configuration File
+
+name: "Etcnet-solar"
+author: "jouni@etcnet.fi"
+config:
+  parent: twenty-one
