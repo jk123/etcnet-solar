@@ -1,6 +1,5 @@
-/* * ETCNET WHMCS Custom Styles v1.2
- * Perustuu ETCNET_TEMPLATE.md määrittelyihin
- * Muutokset: Tasainen tausta markkinointiosioille, input-kenttien reunojen sulautus
+/* * ETCNET WHMCS Custom Styles v1.3
+ * Muutokset: Korjattu vaalea "Breadcrumb" -palkki ja logon tausta tummassa tilassa.
  */
 
 /* 1. CSS MUUTTUJAT & TEEMA (LIGHT MODE DEFAULT) */
@@ -16,7 +15,7 @@
     --text-muted: #6c757d;
     --border-color: #e9ecef;
     --input-bg: #ffffff;
-    --input-border: #ced4da; /* Erottuva reuna vaaleassa tilassa */
+    --input-border: #ced4da;
     
     --header-bg: rgba(255, 255, 255, 0.98);
     --footer-bg: #ffffff;
@@ -24,7 +23,7 @@
 }
 
 /* 2. TYPOGRAFIA */
-body, h1, h2, h3, h4, h5, h6, .btn, .navbar, .form-control {
+body, h1, h2, h3, h4, h5, h6, .btn, .navbar, .form-control, .breadcrumb {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
 }
 
@@ -32,7 +31,6 @@ body, h1, h2, h3, h4, h5, h6, .btn, .navbar, .form-control {
 body {
     background-color: var(--bg-body);
     color: var(--text-main);
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* 4. HEADER (STICKY) */
@@ -45,12 +43,19 @@ header, .navbar-main {
     border-bottom: 1px solid var(--border-color);
 }
 
-/* 5. CONTENT & CARDS */
-.card, .home-features, .features {
+/* 5. CONTENT, CARDS & BREADCRUMB */
+.card, .home-features, .features, .breadcrumb {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     box-shadow: none;
     border-radius: 6px;
+}
+
+/* Poistetaan breadcrumbin reunus, jotta se näyttää siistimmältä */
+.breadcrumb {
+    border: none; 
+    margin-bottom: 0;
+    padding: 1rem 0;
 }
 
 .card-header {
@@ -59,12 +64,12 @@ header, .navbar-main {
     font-weight: 600;
 }
 
-/* 6. INPUT KENTÄT (LOMAKKEET) */
+/* 6. INPUT KENTÄT */
 .form-control {
     background-color: var(--input-bg);
     border: 1px solid var(--input-border);
     color: var(--text-main);
-    box-shadow: none !important; /* Poistetaan varjot */
+    box-shadow: none !important;
 }
 
 /* 7. FOOTER */
@@ -77,49 +82,64 @@ footer, .footer {
     z-index: 10;
 }
 
-/* 8. TUMMA TILA (DARK MODE - FLAT & UNIFORM) */
+/* 8. TUMMA TILA (DARK MODE - KORJATTU) */
 @media (prefers-color-scheme: dark) {
     :root {
-        /* YHTENÄINEN TUMMA TAUSTA KAIKKIALLE */
+        /* YHTENÄINEN TUMMA TAUSTA KAIKKIALLE (#121212) */
         --bg-body: #121212; 
         --bg-card: #121212; 
         
         --text-main: #e0e0e0;
         --text-muted: #a0a0a0;
-        
-        /* Reunat hyvin himmeänä */
         --border-color: #2a2a2a;
         
-        /* Inputit: Tausta hieman erottuva, mutta reuna samaa sävyä */
         --input-bg: #1a1a1a; 
-        --input-border: #2a2a2a; /* Reuna sama kuin yleinen border -> Sulautuu */
+        --input-border: #2a2a2a;
         
         --header-bg: rgba(18, 18, 18, 0.95);
         
-        /* Footer */
         --footer-bg: #181818;
         --footer-border: #333333;
     }
 
-    /* Pakotetaan taustat tasaisiksi (Myös "Miksi valita" -osiot) */
-    body, .main-content, section, .tiles, .features, .home-features {
-        background-color: var(--bg-body) !important;
-    }
-    
-    /* Ylikirjoitetaan mahdolliset WHMCS:n omat apuluokat tummassa tilassa */
-    .bg-white, .bg-light, .bg-gray {
+    /* TÄRKEÄ: Pakotetaan kaikki vaaleat tausta-apuohjelmat (bg-light) tummiksi */
+    body, .main-content, section, .tiles, .features, .home-features, 
+    .bg-light, .bg-white, .bg-gray {
         background-color: var(--bg-body) !important;
         color: var(--text-main) !important;
     }
 
-    /* Kortit ja paneelit - Tasainen väri */
+    /* KORJAUS 1: BREADCRUMB (Se vaalea palkki "Support / ...") */
+    .breadcrumb, .breadcrumb-item, .topbar, .navbar {
+        background-color: var(--bg-body) !important;
+        color: var(--text-muted) !important;
+    }
+    
+    .breadcrumb-item.active {
+        color: var(--text-main) !important;
+    }
+    
+    .breadcrumb a {
+        color: #5fb4ff !important;
+    }
+
+    /* KORJAUS 2: LOGON ALUE JA NAVIGAATIO */
+    .navbar-brand, .header-logo {
+        background-color: transparent !important;
+    }
+    
+    /* Varmistetaan, että navbarin tausta on oikea */
+    .navbar-main {
+        background-color: var(--header-bg) !important;
+    }
+
+    /* Kortit ja paneelit */
     .card, .panel, .list-group-item, .well {
         background-color: var(--bg-card) !important;
         border-color: var(--border-color) !important;
     }
 
-    /* INPUT KENTÄT TUMMASSA TILASSA */
-    /* Reuna on nyt samaa väriä kuin muutkin viivat, ei korostettu */
+    /* Input kentät */
     .form-control, select.form-control {
         background-color: var(--input-bg) !important;
         border-color: var(--input-border) !important;
@@ -128,10 +148,9 @@ footer, .footer {
     
     .form-control:focus {
         background-color: #222 !important;
-        border-color: var(--primary-color) !important; /* Vain aktiivisena korostus */
+        border-color: var(--primary-color) !important;
     }
     
-    /* Input group addonit (esim. valuutta-merkki) */
     .input-group-text, .input-group-addon {
         background-color: var(--bg-card) !important;
         border-color: var(--input-border) !important;
@@ -147,9 +166,5 @@ footer, .footer {
         background-color: var(--footer-bg) !important;
         border-top-color: var(--footer-border) !important;
         box-shadow: 0 -4px 20px rgba(0,0,0,0.3); 
-    }
-    
-    footer p, footer a {
-        color: var(--text-muted) !important;
     }
 }
