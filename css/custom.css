@@ -1,68 +1,55 @@
-/* * ETCNET WHMCS Custom Styles
+/* * ETCNET WHMCS Custom Styles v1.1
  * Perustuu ETCNET_TEMPLATE.md määrittelyihin
- * Tavoite: Suorituskyky, System Fonts, Dark Mode -tuki
+ * Muutokset: Tasainen tumma tausta (Flat Dark), Erottuva Footer
  */
 
 /* 1. CSS MUUTTUJAT & TEEMA (LIGHT MODE DEFAULT) */
 :root {
-    /* Brändivärit ja perusasetukset */
-    --primary-color: #0056b3; /* Mukautettava pääväri */
+    --primary-color: #0056b3;
     --secondary-color: #6c757d;
-    --accent-color: #28a745; /* CTA väri */
+    --accent-color: #28a745;
     
-    /* Tausta ja teksti (Light Mode) */
-    --bg-body: #ffffff;
-    --bg-card: #f8f9fa;
+    /* Light Mode */
+    --bg-body: #f4f6f9; /* Hieman taitettu valkoinen */
+    --bg-card: #ffffff;
     --text-main: #212529;
     --text-muted: #6c757d;
-    --border-color: #dee2e6;
+    --border-color: #e9ecef;
+    --input-bg: #ffffff;
     
-    /* Header */
-    --header-bg: rgba(255, 255, 255, 0.95);
-    --header-height: 70px;
+    --header-bg: rgba(255, 255, 255, 0.98);
+    --footer-bg: #ffffff;
+    --footer-border: #dee2e6;
 }
 
-/* 2. TYPOGRAFIA - SYSTEM FONT STACK 
-   Ei ladata ulkoisia fontteja suorituskyvyn maksimoimiseksi. */
-body, h1, h2, h3, h4, h5, h6, .btn, .navbar {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+/* 2. TYPOGRAFIA - SYSTEM FONTS */
+body, h1, h2, h3, h4, h5, h6, .btn, .navbar, .form-control {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
 }
 
-/* 3. YLEINEN ULKOASU JA SUORITUSKYKY */
+/* 3. YLEINEN ULKOASU */
 body {
     background-color: var(--bg-body);
     color: var(--text-main);
-    transition: background-color 0.3s ease, color 0.3s ease; /* Pehmeä teeman vaihto */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* 4. HEADER & NAVIGAATIO (STICKY)
-   Yläpalkki kiinnitetään sivun yläosaan. */
+/* 4. HEADER (STICKY) */
 header, .navbar-main {
     position: sticky !important;
     top: 0;
     z-index: 1030;
     background-color: var(--header-bg) !important;
-    backdrop-filter: blur(10px); /* Moderni lasiefekti */
+    backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-/* 5. PAINIKKEET JA CTA */
-.btn-primary {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    font-weight: 600;
-}
-
-.btn-primary:hover {
-    opacity: 0.9;
-}
-
-/* 6. WHMCS KORTIT (CARDS) - YKSINKERTAISTAMINEN */
+/* 5. CONTENT & CARDS (Yhtenäistäminen) */
 .card {
-    border: 1px solid var(--border-color);
-    box-shadow: none; /* Poistetaan raskaat varjot minimalistisemman ilmeen saamiseksi */
     background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    box-shadow: none; /* Minimalistinen */
+    border-radius: 6px;
 }
 
 .card-header {
@@ -71,72 +58,81 @@ header, .navbar-main {
     font-weight: 600;
 }
 
-/* 7. FOOTER 
-   Selkeä ja lakisääteinen, pidetään kevyeenä. */
-footer, .footer {
-    background-color: var(--bg-card) !important;
-    border-top: 1px solid var(--border-color);
-    padding: 2rem 0;
-    margin-top: 3rem;
+/* Lomakekentät */
+.form-control {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
 }
 
-/* 8. TUMMA TILA (DARK MODE)
-   Toteutettu CSS Media Querylla ilman raskasta JS-kirjastoa.
-   Aktivoituu käyttäjän järjestelmäasetusten mukaan. */
+/* 6. FOOTER ("Alin laatikko") */
+footer, .footer {
+    background-color: var(--footer-bg) !important;
+    border-top: 2px solid var(--footer-border) !important; /* Vahvempi reunus */
+    padding: 3rem 0;
+    margin-top: 4rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* 7. TUMMA TILA (DARK MODE - FLAT & UNIFORM) */
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg-body: #121212;
-        --bg-card: #1e1e1e;
+        /* Yhtenäinen syvä mustanharmaa tausta kaikkialle */
+        --bg-body: #121212; 
+        --bg-card: #121212; /* Sama kuin body -> Tasainen tausta */
+        
         --text-main: #e0e0e0;
-        --text-muted: #b0b0b0;
-        --border-color: #333333;
+        --text-muted: #a0a0a0;
+        
+        /* Reunat himmeänä erottimena */
+        --border-color: #2a2a2a;
+        
+        /* Inputit erottuvat hieman taustasta */
+        --input-bg: #1a1a1a; 
+        
         --header-bg: rgba(18, 18, 18, 0.95);
+        
+        /* Footer erottumaan paremmin */
+        --footer-bg: #181818; /* Hivenen vaaleampi kuin body */
+        --footer-border: #333333; /* Selkeä reunus ylhäällä */
     }
 
-    /* WHMCS spesifit korjaukset tummaan tilaan */
-    body {
-        background-color: var(--bg-body);
-        color: var(--text-main);
+    /* Pakotetaan taustat tasaisiksi */
+    body, .main-content, section {
+        background-color: var(--bg-body) !important;
     }
 
-    .card, .list-group-item, .panel {
-        background-color: var(--bg-card);
-        border-color: var(--border-color);
-    }
-
-    .form-control {
-        background-color: #2d2d2d;
-        border-color: var(--border-color);
-        color: var(--text-main);
-    }
-    
-    .form-control:focus {
-        background-color: #333;
-        color: #fff;
-    }
-
-    .table {
-        color: var(--text-main);
-    }
-    
-    .table td, .table th {
-        border-top-color: var(--border-color);
-    }
-
-    /* Linkit tummalla taustalla */
-    a {
-        color: #4da3ff;
-    }
-    
-    /* Sticky header tummana */
-    header, .navbar-main {
-        background-color: var(--header-bg) !important;
-        border-bottom-color: var(--border-color);
-    }
-    
-    /* Footer tummana */
-    footer, .footer {
+    /* Kortit sulautuvat taustaan, vain reunus erottaa */
+    .card, .panel, .list-group-item {
         background-color: var(--bg-card) !important;
-        color: var(--text-muted);
+        border-color: var(--border-color) !important;
+    }
+
+    /* Input kentät erottumaan 'flat' taustasta */
+    .form-control {
+        background-color: var(--input-bg) !important;
+        border-color: var(--border-color) !important;
+        color: #fff !important;
+    }
+    .form-control:focus {
+        border-color: var(--primary-color) !important;
+        background-color: #222 !important;
+    }
+
+    /* Linkit kirkkaammaksi tummalla */
+    a { color: #5fb4ff; }
+    a:hover { color: #8bcaff; }
+
+    /* FOOTERIN PARANTELU TUMMASSA TILASSA */
+    footer, .footer {
+        background-color: var(--footer-bg) !important;
+        border-top-color: var(--footer-border) !important;
+        /* Lisätään pieni varjo nostamaan footer irti tasaisesta taustasta */
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.3); 
+    }
+    
+    footer p, footer a {
+        color: var(--text-muted) !important;
     }
 }
