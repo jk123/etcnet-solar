@@ -1,0 +1,134 @@
+/*
+Theme Name: Etcnet Solar
+Theme URI: https://etcnet.fi/
+Description: Solar Hosting Child Theme based on Twenty-One.
+Author: Etcetera Networks
+Template: twenty-one
+Version: 1.0
+*/
+
+[span_0](start_span)/* --- 1. FONTTIEN TUONTI[span_0](end_span) --- */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Inter:wght@300;400;500;600&display=swap');
+
+/* --- 2. MUUTTUJAT (Väripaletti) --- */
+:root {
+    [span_1](start_span)[span_2](start_span)/* Primary Colors[span_1](end_span)[span_2](end_span) */
+    --color-brand-primary: #d97706;  /* Amber-600 */
+    --color-brand-hover:   #b45309;  /* Amber-700 */
+    
+    [span_3](start_span)/* Backgrounds[span_3](end_span) */
+    --bg-body:       #fafaf9; /* Stone-50 */
+    --bg-card:       #ffffff; /* White */
+    --bg-dark-header:#1c1917; /* Stone-900 */
+    
+    [span_4](start_span)/* Text Colors[span_4](end_span) */
+    --text-main:     #1c1917; /* Stone-900 */
+    --text-muted:    #57534e; /* Stone-600 */
+    --text-inverse:  #f5f5f4; /* Stone-100 */
+    
+    /* Borders */
+    --border-color:  #e7e5e4; [span_5](start_span)/* Stone-200[span_5](end_span) */
+}
+
+/* --- 3. PERUSTYYLIT (Base Styles) --- */
+
+body {
+    background-color: var(--bg-body) !important; [span_6](start_span)/*[span_6](end_span) */
+    font-family: 'Inter', sans-serif; [span_7](start_span)/*[span_7](end_span) */
+    color: var(--text-main);
+    -webkit-font-smoothing: antialiased;
+}
+
+[span_8](start_span)/* Otsikot (Typography)[span_8](end_span) */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+/* --- 4. HEADER & NAVIGAATIO --- */
+
+[span_9](start_span)/* Yläpalkki tummaksi[span_9](end_span) */
+.header-main, 
+.navbar-main {
+    background-color: var(--bg-dark-header) !important;
+    border-bottom: none;
+}
+
+/* Navigaatiolinkit */
+.navbar-main .navbar-nav .nav-link {
+    color: var(--text-inverse) !important; [span_10](start_span)/*[span_10](end_span) */
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+
+.navbar-main .navbar-nav .nav-link:hover {
+    color: #fbbf24 !important; [span_11](start_span)/* Amber-400[span_11](end_span) */
+}
+
+[span_12](start_span)/* Logo - Merriweather Bold[span_12](end_span) */
+.navbar-brand {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    color: var(--text-inverse) !important;
+}
+
+/* --- 5. KOMPONENTIT --- */
+
+[span_13](start_span)[span_14](start_span)/* Kortit ja Paneelit (Cards & Panels)[span_13](end_span)[span_14](end_span) */
+.card, .panel {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 24px !important; /* Brändin mukainen pyöristys */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); [span_15](start_span)/*[span_15](end_span) */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+[span_16](start_span)/* Korttien Hover-efekti[span_16](end_span) */
+.card:hover, .panel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+[span_17](start_span)/* Sidebar ja laatikot vaaleaksi[span_17](end_span) */
+.card-sidebar {
+    background-color: #ffffff;
+    border-radius: 24px;
+}
+
+/* --- 6. PAINIKKEET (Buttons) --- */
+
+[span_18](start_span)/* Primary Button - Pilleri-muoto[span_18](end_span) */
+.btn-primary {
+    background-color: var(--color-brand-primary);
+    border-color: var(--color-brand-primary);
+    border-radius: 9999px !important; /* Full rounded */
+    color: white;
+    padding: 0.75rem 1.5rem; /* Väljät välit */
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+[span_19](start_span)/* Hover-tila[span_19](end_span) */
+.btn-primary:hover, 
+.btn-primary:focus, 
+.btn-primary:active {
+    background-color: var(--color-brand-hover) !important;
+    border-color: var(--color-brand-hover) !important;
+    transform: scale(1.05); /* Pieni suurennus */
+    box-shadow: 0 10px 15px -3px rgba(180, 83, 9, 0.3);
+}
+
+/* --- 7. ALATUNNISTE (Footer) --- */
+
+section#footer {
+    background-color: var(--bg-dark-header); [span_20](start_span)/*[span_20](end_span) */
+    color: var(--text-inverse);
+    border-top: 1px solid #292524; /* Stone-800 erotin */
+}
+
+section#footer p, 
+section#footer a {
+    color: #a8a29e; /* Stone-400 himmeämpi teksti */
+}
