@@ -73,20 +73,4 @@
 
     </div>
 </div>
-
-{* Uutiset tai lisätieto *}
-<div class="bg-light py-5">
-    <div class="container">
-        <h3 class="text-center mb-4" style="color: var(--nordic-night);">Miksi valita Etcnet Solar?</h3>
-        <div class="row">
-            <div class="col-md-6">
-                <h4><i class="fas fa-check text-success"></i> Kotimainen tuki</h4>
-                <p>Palvelemme sinua selkeällä suomen kielellä.</p>
-            </div>
-            <div class="col-md-6">
-                <h4><i class="fas fa-check text-success"></i> Moderni teknologia</h4>
-                <p>Käytämme uusimpia NVMe-levyjä ja tehokkaita prosessoreita.</p>
-            </div>
-        </div>
-    </div>
 </div>
