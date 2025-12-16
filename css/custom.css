@@ -1,18 +1,20 @@
-/* --- WHMCS TWENTY-ONE: DARK MODE FINAL FIX (v6) --- */
+/* --- WHMCS TWENTY-ONE: DARK MODE (CUSTOM CSS) --- */
 
-/* 1. YLEISET JA TAUSTAT */
+/* 1. GENERAL SETTINGS & BACKGROUNDS */
 body, html, .main-content, section#main-body {
     background-color: #121212 !important;
     color: #e0e0e0 !important;
 }
 
-/* 2. PAKOTA "VALKOISET" LAATIKOT TUMMIKSI (Tämä korjaa kuvan 4 ongelman) */
+/* 2. FORCE "WHITE" CONTENT BOXES TO DARK */
+/* Overwrites default white background classes used in promo blocks */
 .bg-white, .background-white, .whmcs-market-connect-promo, .content-block {
     background-color: #1e1e1e !important;
     color: #e0e0e0 !important;
 }
 
-/* 3. ETUSIVUN DOMAIN-HAKU JA BANNERIT (Tämä korjaa kuvan 3 ongelman) */
+/* 3. HOMEPAGE DOMAIN SEARCH & BANNERS */
+/* Removes the bright background from the domain checker area */
 .domain-checker-bg, 
 section#home-banner, 
 div.home-content,
@@ -22,7 +24,8 @@ div.home-content,
     background: #121212 !important;
 }
 
-/* 4. TAULUKOIDEN SIVUTUSNAPIT (Previous / Next) */
+/* 4. TABLE PAGINATION BUTTONS (Previous / Next) */
+/* Fixes the white buttons on data tables */
 .dataTables_wrapper .dataTables_paginate .paginate_button {
     background-color: #2d2d2d !important;
     color: #e0e0e0 !important;
@@ -31,23 +34,27 @@ div.home-content,
     margin-left: 4px;
     padding: 6px 12px;
 }
+/* Hover state */
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
     background-color: #444 !important;
     color: #fff !important;
     border-color: #666 !important;
 }
+/* Current page state */
 .dataTables_wrapper .dataTables_paginate .paginate_button.current {
     background-color: #0056b3 !important;
     color: #fff !important;
     border-color: #0056b3 !important;
 }
+/* Disabled state */
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
     background-color: #1a1a1a !important;
     color: #444 !important;
     border-color: #333 !important;
 }
 
-/* 5. HARMAA PALKKI (Breadcrumbs) */
+/* 5. SECONDARY HEADER (Breadcrumbs) */
+/* Darkens the gray bar below the main navigation */
 section#main-body header, 
 div.header-lined, 
 .breadcrumb {
@@ -59,7 +66,7 @@ div.header-lined,
     color: #bbb !important;
 }
 
-/* 6. YLÄPALKKI JA NAVIGAATIO */
+/* 6. MAIN HEADER & NAVIGATION */
 section#header, header, .navbar-main, .navbar-light {
     background-color: #1f1f1f !important;
     border-bottom: 1px solid #333 !important;
@@ -69,7 +76,7 @@ section#header, header, .navbar-main, .navbar-light {
     color: #fff !important;
 }
 
-/* 7. TAULUKOT JA LISTAT */
+/* 7. TABLES & LISTS */
 .table-container, .table-responsive {
     background-color: #1e1e1e !important;
     border: 1px solid #333 !important;
@@ -92,7 +99,7 @@ table.dataTable tbody tr.odd, table.dataTable tbody tr.even {
     background-color: #1e1e1e !important;
 }
 
-/* 8. KORTIT, TIILET JA LOMAKKEET */
+/* 8. CARDS, TILES & FORMS */
 .card, .panel, .tile, .well {
     background-color: #1e1e1e !important;
     border: 1px solid #333 !important;
@@ -112,14 +119,14 @@ table.dataTable tbody tr.odd, table.dataTable tbody tr.even {
     border: 1px solid #444 !important;
     color: #fff !important;
 }
-/* Hakukenttä taulukon päällä */
+/* Search filter above tables */
 div.dataTables_wrapper .dataTables_filter input {
     background-color: #2d2d2d !important;
     color: #fff !important;
     border: 1px solid #555 !important;
 }
 
-/* 9. ALAPALKKI */
+/* 9. FOOTER */
 section#footer {
     background-color: #0d0d0d !important;
     color: #aaa !important;
@@ -129,10 +136,11 @@ section#footer p, section#footer h1, section#footer h2 {
     color: #fff !important;
 }
 
-/* 10. MUUT */
+/* 10. MISCELLANEOUS */
 a { color: #5dade2 !important; }
 h1,h2,h3,h4,h5 { color: #fff !important; }
-/* Logolle tausta varmuuden vuoksi */
+
+/* Optional: Add a small white bg to logo if it's transparent/black */
 .navbar-brand img {
     background-color: white; 
     border-radius: 4px;
